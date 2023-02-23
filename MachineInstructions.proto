@@ -58,6 +58,8 @@ message PrepareInstructionBS {
 message PrepareInstructionDS {
   reserved "gate";
   reserved 1;
+  // Send order_id 0 to let DS consume a product without further action.
+  // This can be used to get rid of waste products, such as clear bases.
   required uint32 order_id = 2;
 }
 
