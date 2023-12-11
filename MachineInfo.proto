@@ -51,7 +51,7 @@ option java_outer_classname = "MachineInfoProtos";
 
 message LightSpec {
   enum CompType {
-    COMP_ID = 2000;
+    COMP_ID  = 2000;
     MSG_TYPE = 10;
   }
 
@@ -61,15 +61,15 @@ message LightSpec {
 }
 
 enum ExplorationState {
-  NO_REPORT = 0;
-  CORRECT_REPORT = 1;
-  WRONG_REPORT = 2;
+	NO_REPORT = 0;
+	CORRECT_REPORT = 1;
+	WRONG_REPORT = 2;
 }
 
 // Shelf Information
 message ShelfSlotInfo {
   enum CompType {
-    COMP_ID = 2000;
+    COMP_ID  = 2000;
     MSG_TYPE = 121;
   }
   // shelf position (see MachineInstructons.proto)
@@ -84,27 +84,27 @@ message ShelfSlotInfo {
 
 message Machine {
   enum CompType {
-    COMP_ID = 2000;
+    COMP_ID  = 2000;
     MSG_TYPE = 12;
   }
   // Machine name, type, and team
-  required string name = 1;
-  optional string type = 2;
-  optional string state = 3;
-  optional Team team_color = 10;
+  required string    name       =  1;
+  optional string    type       =  2;
+  optional string    state      =  3;
+  optional Team      team_color = 10;
 
   // Current state of the lights
   repeated LightSpec lights = 7;
   // Optional pose if known to refbox
-  optional Pose2D pose = 8;
+  optional Pose2D    pose = 8;
   // Which zone the machine is in
-  optional Zone zone = 11;
-  optional uint32 rotation = 12;
+  optional Zone      zone = 11;
+  optional uint32    rotation = 12;
   // Only set during exploration phase
   // Correctly reported? (zone and type correct)
-  optional bool correctly_reported = 9;
+  optional bool      correctly_reported = 9;
   // Number of bases loaded
-  optional uint32 loaded_with = 13 [ default = 0 ];
+  optional uint32    loaded_with = 13 [default = 0];
 
   repeated RingColor ring_colors = 14;
 
@@ -125,13 +125,13 @@ message Machine {
 
 message MachineInfo {
   enum CompType {
-    COMP_ID = 2000;
+    COMP_ID  = 2000;
     MSG_TYPE = 13;
   }
 
   // List of machines states
-  repeated Machine machines = 1;
+  repeated Machine machines   = 1;
 
   // Team color (only broadcast)
-  optional Team team_color = 2;
+  optional Team    team_color = 2;
 }

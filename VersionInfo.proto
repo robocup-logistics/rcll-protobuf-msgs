@@ -43,12 +43,12 @@ option java_outer_classname = "VersionProtos";
 
 message VersionInfo {
   enum CompType {
-    COMP_ID = 2000;
+    COMP_ID  = 2000;
     MSG_TYPE = 3;
   }
 
-  required uint32 version_major = 1;
-  required uint32 version_minor = 2;
-  required uint32 version_micro = 3;
+  required uint32 version_major  = 1;
+  required uint32 version_minor  = 2;
+  required uint32 version_micro  = 3;
   required string version_string = 4;
 }
