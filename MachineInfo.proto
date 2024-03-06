@@ -92,6 +92,9 @@ message Machine {
   optional string type = 2;
   optional string state = 3;
   optional Team team_color = 10;
+  // tag information
+  optional uint32 input_tag = 5;
+  optional uint32 output_tag = 6;
 
   // Current state of the lights
   repeated LightSpec lights = 7;
