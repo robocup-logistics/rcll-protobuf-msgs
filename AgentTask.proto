@@ -14,6 +14,32 @@ message AgentTask {
     MSG_TYPE = 502;
   }
 
+  // 0: None
+  // 1XX: Parsing Error
+  // 2XX: Execution Error
+  // 22X: Internal Error
+  // 3XX: Calculation Error
+  enum ErrorCode {
+    NO_ERROR = 0;
+    UNKNOWN = 1;
+    WRONG_TEAM = 101;
+    WRONG_ROBOT = 102;
+    INVALID_TARGET = 103;
+    TASK_NOT_SUPPORTED = 104;
+    NOT_AT_POSITION = 105;
+    UNABLE_TO_MOVE_TO_TARGET = 201;
+    NO_WORKPIECE_FOUND = 202;
+    MPS_NOT_FOUND = 203;
+    WORKPIECE_SENSOR_DISAGREEMENT = 204;
+    ABORTED_DUE_TO_UNEXPECTED_COLLISION = 205;
+    GRASPING_FAILED = 206;
+    WORKPIECE_ALREADY_IN_GRIPPER = 207;
+    NO_WORKPIECE_IN_GRIPPER = 208;
+    MACHINE_POINT_OCCUPIED = 209;
+    INTERNAL_ERROR = 220;
+    NO_PATH_FOUND = 300;
+  }
+
   // general infos
   required Team team_color = 1; // Color of the team
   required uint32 task_id = 2;  // identifier for the tasks
@@ -36,9 +62,8 @@ message AgentTask {
       12; // if true current task is paused, if false again task is continued
   optional bool successful = 13; // was the task finished successful?
   optional bool canceled =
-      14; // the task was successfully cancled from the agent
-  optional uint32 error_code = 15; // only set if failure, error-codes not yet
-                                   // defined, might be changed to an enum
+      14; // the task was successfully canceled from the agent
+  optional uint32 error_code = 15; // only set if failure, error codes defined in ErrorCode enum
 }
 
 // Move robot to stated waypoint
